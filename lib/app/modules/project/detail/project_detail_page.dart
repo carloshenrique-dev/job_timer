@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:job_timer/app/core/ui/themes/job_timer_icons.dart';
 import 'package:job_timer/app/modules/project/detail/widgets/project_detail_app_bar.dart';
 import 'package:job_timer/app/modules/project/detail/widgets/project_detail_chart.dart';
-
 import 'widgets/project_task_tile.dart';
 
 class ProjectDetailPage extends StatelessWidget {
