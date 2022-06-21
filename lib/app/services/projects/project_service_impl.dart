@@ -1,8 +1,9 @@
 import 'package:job_timer/app/entities/project.dart';
 import 'package:job_timer/app/entities/project_status.dart';
+import 'package:job_timer/app/entities/project_task.dart';
 import 'package:job_timer/app/repositories/projects/project_repository.dart';
+import 'package:job_timer/app/view_models/project_task_view_model.dart';
 import 'package:job_timer/app/view_models/project_view_model.dart';
-
 import './project_service.dart';
 
 class ProjectServiceImpl implements ProjectService {
@@ -27,4 +28,22 @@ class ProjectServiceImpl implements ProjectService {
     final projects = await _projectRepository.findByStatus(status);
     return projects.map(ProjectViewModel.fromEntity).toList();
   }
+
+  @override
+  Future<ProjectViewModel> addTask(int id, ProjectTaskViewModel task) async {
+    final projectTask = ProjectTask()
+      ..name = task.name
+      ..duration = task.duration;
+    final project = await _projectRepository.addTask(id, projectTask);
+    return ProjectViewModel.fromEntity(project);
+  }
+
+  @override
+  Future<ProjectViewModel> findById(int id) async {
+    final project = await _projectRepository.findById(id);
+    return ProjectViewModel.fromEntity(project);
+  }
+
+  @override
+  Future<void> finish(int id) => _projectRepository.finish(id);
 }

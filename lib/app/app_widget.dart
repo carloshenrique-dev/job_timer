@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:asuka/asuka.dart' as asuka;
-
 import 'core/ui/themes/app_ui.dart';
 
 class AppWidget extends StatelessWidget {
